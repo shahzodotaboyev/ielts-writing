@@ -48,8 +48,9 @@ body {
 }
 .chat-body .message {
   display: flex;
+
   gap: 11px;
-  align-items: center;
+  align-items: end;
 }
 
 .chat-body .bot-message .bot-avatar {
