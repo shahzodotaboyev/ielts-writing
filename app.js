@@ -19,7 +19,7 @@ const createMessageElement = (content, ...classes) => {
 const generateBotResponse = async () => {
   const requestOptions = {
     method: "POST",
-    headers: { "Content-Type": "application/json" }, // Xato to‘g‘rilandi
+    headers: { "Content-Type": "application/json" }, // ✅ Xato to‘g‘rilandi
     body: JSON.stringify({
       contents: [
         {
@@ -28,14 +28,17 @@ const generateBotResponse = async () => {
       ],
     }),
   };
+
   try {
     const response = await fetch(API_URL, requestOptions);
     const data = await response.json();
-    if (!response.ok) throw new Error(data.error.message); // Xato to‘g‘rilandi
+    
+    if (!response.ok) throw new Error(data.error.message); // ✅ Xato to‘g‘rilandi
 
-    const botMessageText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kechirasiz, javob bera olmadim.";
+    // Bot javobini olish
+    const botMessageText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kechirasiz, tushunmadim.";
 
-    // Bot xabarini ko‘rsatish
+    // Botning xabarini chiqarish
     const incomingMessageDiv = createMessageElement(
       `<img class="bot-avatar" width="45px" height="45px" src="./img/image (1).png" alt="" />
        <div class="message-text">${botMessageText}</div>`,
@@ -57,7 +60,7 @@ const handleOutgoingMessage = (e) => {
 
   messageInput.value = "";
 
-  // Foydalanuvchi xabarini qo‘shish
+  // Foydalanuvchi xabarini chatga qo‘shish
   const outgoingMessageDiv = createMessageElement(
     `<div class="message-text">${userData.message}</div>`,
     "user-message"
