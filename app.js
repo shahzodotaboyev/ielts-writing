@@ -108,4 +108,3 @@ messageInput.addEventListener("keydown", (e) => {
 });
 
 sendMessagebutton.addEventListener("click", handleOutgoingMessage);
-  

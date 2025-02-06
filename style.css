@@ -24,9 +24,7 @@
 }
 
 .cantainer {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+
   min-height: 100vh;
   background: linear-gradient(#eeeeff, #c8c7ff);
 }
@@ -51,6 +49,7 @@
   overflow: hidden;
   overflow-y: auto;
   flex-direction: column;
+  justify-content: end;
 }
 .chat-body .message {
   display: flex;
@@ -191,15 +190,13 @@
 }
 
 @media (max-width: 768px) {
-   .chatbot-popur {
+  .chatbot-popur {
     max-width: 100%;
   }
-.chat-footer{
-  max-width: 100%;
-}
-.chat-body{
-  padding: 5px 5px;
-
-}
- 
+  .chat-footer {
+    max-width: 100%;
+  }
+  .chat-body {
+    padding: 5px 5px;
+  }
 }

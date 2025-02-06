@@ -11,45 +11,54 @@
     />
   </head>
   <body>
-  <div class="cantainer">
-    <div class="chatbot-popur">
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img
-            class="bot-avatar"
-            width="45px"
-            height="45px"
-            src="./img/image (1).png"
-            alt=""
-          />
-          <div class="message-text">
-            Hey There <br />How can I help you today?
+    <div class="cantainer">
+      <div class="chatbot-popur">
+        <div class="chat-body">
+          <div class="message bot-message">
+            <img
+              class="bot-avatar"
+              width="45px"
+              height="45px"
+              src="./img/image (1).png"
+              alt=""
+            />
+            <div class="message-text">
+              Hey There <br />How can I help you today?
+            </div>
           </div>
         </div>
+        <div class="chat-footer">
+          <form action="#" class="chat-form">
+            <textarea required class="message-input" placeholder="Message...">
+            </textarea>
+            <div class="chat-controls">
+              <button type="button" class="material-symbols-rounded">
+                sentiment_satisfied
+              </button>
+              <button type="button" class="material-symbols-rounded">
+                attach_file
+              </button>
+              <button
+                id="send-message"
+                type="submit"
+                class="material-symbols-rounded"
+              >
+                arrow_upward
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea required class="message-input" placeholder="Message...">
-          </textarea>
-          <div class="chat-controls">
-            <button type="button" class="material-symbols-rounded">
-              sentiment_satisfied
-            </button>
-            <button type="button" class="material-symbols-rounded">
-              attach_file
-            </button>
-            <button
-              id="send-message"
-              type="submit"
-              class="material-symbols-rounded"
-            >
-              arrow_upward
-            </button>
-          </div>
-        </form>
+      <div class="translaterAndHelper">
+        <div class="translator_property">
+          <ul>
+            <li>
+              <select name="en-" id=""></select>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
     <script src="./app.js"></script>
   </body>
