@@ -19,7 +19,7 @@ const createMessageElement = (content, ...classes) => {
 const generateBotResponse = async () => {
   const requestOptions = {
     method: "POST",
-    headers: { "Content-Type": "application/json" }, // ✅ Xato to‘g‘rilandi
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       contents: [
         {
@@ -32,22 +32,21 @@ const generateBotResponse = async () => {
   try {
     const response = await fetch(API_URL, requestOptions);
     const data = await response.json();
-    
-    if (!response.ok) throw new Error(data.error.message); // ✅ Xato to‘g‘rilandi
 
-    // Bot javobini olish
+    if (!response.ok) throw new Error(data.error.message);
+
     const botMessageText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kechirasiz, tushunmadim.";
 
-    // Botning xabarini chiqarish
     const incomingMessageDiv = createMessageElement(
       `<img class="bot-avatar" width="45px" height="45px" src="./img/image (1).png" alt="" />
        <div class="message-text">${botMessageText}</div>`,
       "bot-message"
     );
 
-    // "O‘ylanyapti" animatsiyasini almashtirish
     const thinkingMessage = document.querySelector(".thinking");
     if (thinkingMessage) thinkingMessage.replaceWith(incomingMessageDiv);
+    
+    scrollToBottom(); // Scroll to bottom after bot responds
   } catch (error) {
     console.error(error);
   }
@@ -60,14 +59,14 @@ const handleOutgoingMessage = (e) => {
 
   messageInput.value = "";
 
-  // Foydalanuvchi xabarini chatga qo‘shish
   const outgoingMessageDiv = createMessageElement(
     `<div class="message-text">${userData.message}</div>`,
     "user-message"
   );
   chatBody.appendChild(outgoingMessageDiv);
 
-  // Botning "O‘ylanyapti" animatsiyasini qo‘shish
+  scrollToBottom(); // Scroll to bottom after user sends a message
+
   setTimeout(() => {
     const thinkingMessageDiv = createMessageElement(
       `<img class="bot-avatar" width="45px" height="45px" src="./img/image (1).png" alt="" />
@@ -83,8 +82,10 @@ const handleOutgoingMessage = (e) => {
     );
 
     chatBody.appendChild(thinkingMessageDiv);
+    scrollToBottom(); // Scroll to bottom when "thinking" indicator appears
+
     generateBotResponse();
-  }, 600);
+  }, 100);
 };
 
 messageInput.addEventListener("keydown", (e) => {
@@ -94,3 +95,7 @@ messageInput.addEventListener("keydown", (e) => {
 });
 
 sendMessagebutton.addEventListener("click", handleOutgoingMessage);
+
+const scrollToBottom = () => {
+  chatBody.scrollTop = chatBody.scrollHeight;
+};
