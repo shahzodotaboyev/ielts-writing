@@ -19,7 +19,7 @@ const createMessageElement = (content, ...classes) => {
 const generateBotResponse = async () => {
   const requestOptions = {
     method: "POST",
-    headers: { "Content-Type": "application/json" }, // ✅ Xato to‘g‘rilandi
+    headers: { "Content-Type": "application/json" },  
     body: JSON.stringify({
       contents: [
         {
@@ -33,7 +33,7 @@ const generateBotResponse = async () => {
     const response = await fetch(API_URL, requestOptions);
     const data = await response.json();
     
-    if (!response.ok) throw new Error(data.error.message); // ✅ Xato to‘g‘rilandi
+    if (!response.ok) throw new Error(data.error.message);  
 
     // Bot javobini olish
     const botMessageText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kechirasiz, tushunmadim.";

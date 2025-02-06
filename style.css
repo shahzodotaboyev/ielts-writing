@@ -6,6 +6,25 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+/* Skroll panelning umumiy o‘lchami */
+::-webkit-scrollbar {
+  width: 5px; /* Vertikal scrollbar uchun kenglik */
+  height: 3px; /* Gorizontal scrollbar uchun balandlik */
+}
+
+/* Skroll paneldagi harakatlanuvchi element (thumb) */
+::-webkit-scrollbar-thumb {
+  background: grey; /* Thumb'ni ko‘rinadigan qilish */
+  border-radius: 10px; /* Burchaklarni yumshatish */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: darkgrey;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: black;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -37,11 +56,12 @@ body {
 } */
 
 .chat-body {
-  padding: 25px 22px;
+  padding: 5px 22px;
   display: flex;
   gap: 20px;      
-  height: 460px;
-  margin-bottom: 82px;
+  max-height: 500px;
+  height: 100%;
+  /* margin-bottom: 82px; */
   overflow: hidden;
   overflow-y: auto;
   flex-direction: column;
@@ -130,7 +150,7 @@ body {
 .chat-footer {
   position: absolute;
   bottom: 10;
-  max-width: 420px;
+  max-width: 450px;
   width: 100%;
   background: #fff;
   padding: 15px 22px 20px;
@@ -184,4 +204,56 @@ body {
 }
 .chat-form .chat-controls button:hover{
     background: #f2f2ff;
+}
+
+/* Mobil ekranlar uchun moslashtirish */
+@media screen and (max-width: 480px) {
+  .chatbot-popur {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .chat-body {
+    padding: 10px;
+    max-height: calc(100vh - 100px);
+  }
+
+  .chat-footer {
+    max-width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .chat-form .message-input {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .chat-form .chat-controls button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
+
+/* O‘rta o‘lchamdagi ekranlar (planshetlar) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .chatbot-popur {
+    width: 80%;
+  }
+
+  .chat-body {
+    max-height: 500px;
+  }
+}
+
+/* Katta ekranlar uchun */
+@media screen and (min-width: 1200px) {
+  .chatbot-popur {
+    width: 450px;
+  }
 }
