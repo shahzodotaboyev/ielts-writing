@@ -100,22 +100,8 @@ sendMessagebutton.addEventListener("click", handleOutgoingMessage);
 
 const scrollToBottom = () => {
   chatBody.scrollTop = chatBody.scrollHeight;
+  window.scrollTo(0, document.body.scrollHeight); // Klaviaturadan to'xtash uchun sahifani pastga siljitish
+
 };
 
-// Adjust for keyboard on mobile devices
-const adjustForKeyboard = () => {
-  setTimeout(() => {
-    document.body.style.height = `${window.innerHeight}px`;
-    scrollToBottom();
-  }, 100);
-};
-
-// Mobil klaviatura ochilganda va yopilganda event qo‘shish
-window.addEventListener("resize", adjustForKeyboard);
-
-// Event listener for mobile keyboard resize
-window.visualViewport.addEventListener("resize", adjustForKeyboard);
-window.visualViewport.addEventListener("resize", () => {
-  document.body.style.height = `${window.visualViewport.height}px`;
-  scrollToBottom();
-});
+ 
