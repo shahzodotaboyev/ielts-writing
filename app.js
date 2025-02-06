@@ -99,3 +99,13 @@ sendMessagebutton.addEventListener("click", handleOutgoingMessage);
 const scrollToBottom = () => {
   chatBody.scrollTop = chatBody.scrollHeight;
 };
+
+// Adjust for keyboard on mobile devices
+const adjustForKeyboard = () => {
+  const viewportHeight = window.visualViewport.height;
+  document.body.style.height = `${viewportHeight}px`;
+  scrollToBottom(); // Scroll to bottom when keyboard appears
+};
+
+// Event listener for mobile keyboard resize
+window.visualViewport.addEventListener("resize", adjustForKeyboard);
