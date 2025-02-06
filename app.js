@@ -104,4 +104,4 @@ const scrollToBottom = () => {
 
 };
 
- 
+window.visualViewport.addEventListener("resize", adjustForKeyboard);
