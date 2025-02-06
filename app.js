@@ -35,7 +35,9 @@ const generateBotResponse = async () => {
 
     if (!response.ok) throw new Error(data.error.message);
 
-    const botMessageText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kechirasiz, tushunmadim.";
+    const botMessageText =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "Kechirasiz, tushunmadim.";
 
     const incomingMessageDiv = createMessageElement(
       `<img class="bot-avatar" width="45px" height="45px" src="./img/image (1).png" alt="" />
@@ -45,7 +47,7 @@ const generateBotResponse = async () => {
 
     const thinkingMessage = document.querySelector(".thinking");
     if (thinkingMessage) thinkingMessage.replaceWith(incomingMessageDiv);
-    
+
     scrollToBottom(); // Scroll to bottom after bot responds
   } catch (error) {
     console.error(error);
@@ -102,10 +104,14 @@ const scrollToBottom = () => {
 
 // Adjust for keyboard on mobile devices
 const adjustForKeyboard = () => {
-  const viewportHeight = window.visualViewport.height;
-  document.body.style.height = `${viewportHeight}px`;
-  scrollToBottom(); // Scroll to bottom when keyboard appears
+  setTimeout(() => {
+    document.body.style.height = `${window.innerHeight}px`;
+    scrollToBottom();
+  }, 100);
 };
+
+// Mobil klaviatura ochilganda va yopilganda event qo‘shish
+window.addEventListener("resize", adjustForKeyboard);
 
 // Event listener for mobile keyboard resize
 window.visualViewport.addEventListener("resize", adjustForKeyboard);
