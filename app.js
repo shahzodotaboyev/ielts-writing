@@ -108,6 +108,7 @@ const adjustForKeyboard = () => {
 };
 
 // Event listener for mobile keyboard resize
+window.visualViewport.addEventListener("resize", adjustForKeyboard);
 window.visualViewport.addEventListener("resize", () => {
   document.body.style.height = `${window.visualViewport.height}px`;
   scrollToBottom();
