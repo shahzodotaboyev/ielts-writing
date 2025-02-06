@@ -8,14 +8,12 @@
 }
 /* Skroll panelning umumiy o‘lchami */
 ::-webkit-scrollbar {
-  width: 5px; /* Vertikal scrollbar uchun kenglik */
-  height: 3px; /* Gorizontal scrollbar uchun balandlik */
+  width: 5px;
+  height: 3px;
 }
 
-/* Skroll paneldagi harakatlanuvchi element (thumb) */
 ::-webkit-scrollbar-thumb {
-  background: grey; /* Thumb'ni ko‘rinadigan qilish */
-  border-radius: 10px; /* Burchaklarni yumshatish */
+  background: grey;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: darkgrey;
@@ -25,43 +23,30 @@
   background: black;
 }
 
-body {
-  display: flex;
+.cantainer {
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   min-height: 100vh;
   background: linear-gradient(#eeeeff, #c8c7ff);
 }
 .chatbot-popur {
-  width: 420px;
+  max-width: 60%;
+  width: 100%;
   background: #fff;
-  border-radius: 20px 20px 0 0;
+  /* border-radius: 20px 20px 0 0; */
   overflow: hidden;
   box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
 }
-/* 
-.chat-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #5350c4;
-  padding: 15px 22px;
-  justify-content: space-between;
-}
-.chatbot-header .header-info {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-} */
 
 .chat-body {
   padding: 5px 22px;
   display: flex;
   gap: 20px;
-  max-height: 500px;
+  max-height: 88vh;
   height: 100%;
-  min-height: 500px;
+  min-height: 89vh;
   /* margin-bottom: 82px; */
   overflow: hidden;
   overflow-y: auto;
@@ -150,11 +135,11 @@ body {
 .chat-footer {
   position: absolute;
   bottom: 10;
-  max-width: 420px;
+  max-width: 60%;
   width: 100%;
   background: #fff;
   padding: 15px 22px 20px;
-  border-radius: 0 0 20px 20px;
+  /* border-radius: 0 0 20px 20px; */
 }
 .chat-footer .chat-form {
   display: flex;
@@ -203,4 +188,18 @@ body {
 }
 .chat-form .chat-controls button:hover {
   background: #f2f2ff;
+}
+
+@media (max-width: 768px) {
+   .chatbot-popur {
+    max-width: 100%;
+  }
+.chat-footer{
+  max-width: 100%;
+}
+.chat-body{
+  padding: 5px 5px;
+
+}
+ 
 }

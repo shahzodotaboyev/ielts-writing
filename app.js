@@ -41,7 +41,9 @@ const generateBotResponse = async () => {
     const data = await response.json();
     if (!response.ok) throw new Error(data.error.message);
 
-    const botMessageText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kechirasiz, tushunmadim.";
+    const botMessageText =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "Kechirasiz, tushunmadim.";
 
     // 📌 Bot xabarini chatga qo‘shish
     const incomingMessageDiv = createMessageElement(
@@ -106,3 +108,4 @@ messageInput.addEventListener("keydown", (e) => {
 });
 
 sendMessagebutton.addEventListener("click", handleOutgoingMessage);
+  
