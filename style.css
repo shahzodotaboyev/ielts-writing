@@ -58,9 +58,10 @@ body {
 .chat-body {
   padding: 5px 22px;
   display: flex;
-  gap: 20px;      
+  gap: 20px;
   max-height: 500px;
   height: 100%;
+  min-height: 500px;
   /* margin-bottom: 82px; */
   overflow: hidden;
   overflow-y: auto;
@@ -95,7 +96,7 @@ body {
   border-radius: 20px 20px 20px 0;
   max-width: 75%;
 }
- 
+
 .chat-body .bot-messagemessage-text {
   padding: 2px 16px;
 }
@@ -108,7 +109,6 @@ body {
   display: flex;
   gap: 4px;
   opacity: 0.7;
-
 
   border-radius: 50%;
   padding-block: 7px;
@@ -150,7 +150,7 @@ body {
 .chat-footer {
   position: absolute;
   bottom: 10;
-  max-width: 450px;
+  max-width: 420px;
   width: 100%;
   background: #fff;
   padding: 15px 22px 20px;
@@ -163,8 +163,8 @@ body {
   border-radius: 32px;
   outline: 1px solid #cccce5;
 }
-.chat-footer .chat-form:focus-within{
-    outline: 2px solid #5350c4;
+.chat-footer .chat-form:focus-within {
+  outline: 2px solid #5350c4;
 }
 .chat-form .message-input {
   border: none;
@@ -193,67 +193,14 @@ body {
   background: none;
   border-radius: 50%;
   font-size: 1.15rem;
-
 }
-.chat-form .chat-controls  #send-message{
-    color: #fff;
-    background: #5350c4;
+.chat-form .chat-controls #send-message {
+  color: #fff;
+  background: #5350c4;
 }
-.chat-form .chat-controls  #send-message:hover{
-    background: #3d39ac;
+.chat-form .chat-controls #send-message:hover {
+  background: #3d39ac;
 }
-.chat-form .chat-controls button:hover{
-    background: #f2f2ff;
-}
-
-/* Mobil ekranlar uchun moslashtirish */
-@media screen and (max-width: 480px) {
-  .chatbot-popur {
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
-  }
-
-  .chat-body {
-    padding: 10px;
-    max-height: calc(100vh - 100px);
-  }
-
-  .chat-footer {
-    max-width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-  }
-
-  .chat-form .message-input {
-    font-size: 1rem;
-    padding: 12px;
-  }
-
-  .chat-form .chat-controls button {
-    width: 40px;
-    height: 40px;
-    font-size: 1.25rem;
-  }
-}
-
-/* O‘rta o‘lchamdagi ekranlar (planshetlar) */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .chatbot-popur {
-    width: 80%;
-  }
-
-  .chat-body {
-    max-height: 500px;
-  }
-}
-
-/* Katta ekranlar uchun */
-@media screen and (min-width: 1200px) {
-  .chatbot-popur {
-    width: 450px;
-  }
+.chat-form .chat-controls button:hover {
+  background: #f2f2ff;
 }
