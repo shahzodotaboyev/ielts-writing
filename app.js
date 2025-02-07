@@ -97,11 +97,37 @@ messageInput.addEventListener("keydown", (e) => {
 });
 
 sendMessagebutton.addEventListener("click", handleOutgoingMessage);
-
 const scrollToBottom = () => {
+  // chatBody ni pastga siljish
   chatBody.scrollTop = chatBody.scrollHeight;
-  window.scrollTo(0, document.body.scrollHeight); // Klaviaturadan to'xtash uchun sahifani pastga siljitish
 
+  // Ekran pastga siljish
+  setTimeout(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  }, 100); // kechikish vaqtini o'zgartiring
 };
 
 window.visualViewport.addEventListener("resize", adjustForKeyboard);
+
+const adjustForKeyboard = () => {
+  setTimeout(() => {
+    // Klaviatura ochilganda faqatgina chat body ni ko'rsatish
+    document.body.style.height = `${window.visualViewport.height}px`;
+    scrollToBottom();
+  }, 200); // Klaviatura ochilganidan so'ng
+};
+
+window.visualViewport.addEventListener("resize", adjustForKeyboard);
+
+window.visualViewport.addEventListener("resize", () => {
+  document.body.style.height = `${window.visualViewport.height}px`;
+  scrollToBottom();
+});
+
+sendMessagebutton.addEventListener("click", (e) => {
+  handleOutgoingMessage(e);
+
+  setTimeout(() => {
+    messageInput.focus(); // Klaviatura yopilmasligi uchun qayta fokus berish
+  }, 50);
+});
