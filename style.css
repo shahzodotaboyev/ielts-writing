@@ -36,6 +36,41 @@
   height: 10vh;
   border-radius: 50px;
   background: #fff;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.bx-menu {
+  font-size: 35px;
+  display: none !important;
+}
+.header-right{
+  display: flex;
+  align-items: center;gap: 20px;
+}
+.header-right select option{
+
+border: none;
+}
+.header-right span{
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  border: 1px solid #3d39ac;
+  background: #3d39ac;
+  color: #fff;
+  border-radius: 50%;
+
+}
+.bxs-user {
+  font-size: 35px;
+}
+.level {
+  color: #706db0;
 }
 main {
   display: flex;
@@ -248,9 +283,15 @@ main {
 @media (max-width: 768px) {
   .cantainer {
     padding: 0;
+    gap: 0;
+  }
+  .header {
+    border-radius: 0px;
+    background: #ffff;
+    padding: 10px 10px;
   }
   .chatbot-popur {
-    border-radius:0px ;
+    border-radius: 0px;
     max-width: 100%;
   }
 
@@ -263,14 +304,30 @@ main {
     height: 14%;
   }
   .chat-body {
-    padding: 5px 5px;
+    padding: 5px 5px 30px 5;
     border-radius: 0px;
   }
   .nav {
     display: none;
+  }
+  .header-right span{
+    width: 35px;
+    height: 35px;
+  }
+  .bxs-user{
+    font-size: 25px;
   }
 }
 
 .disiplay-none {
   display: none;
 }
+.display-block {
+  display: block;
+}
+
+/* .absaliut {
+  position: absolute;
+  width: 100%;
+  height: 10vh;
+} */

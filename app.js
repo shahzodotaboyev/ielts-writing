@@ -227,3 +227,13 @@ statistika.addEventListener("click", function () {
   grammerPage.classList.add("disiplay-none");
   statistikaPage.classList.remove("disiplay-none");
 });
+
+// ---------------------------
+let bxMenu = document.querySelector(".bx-menu");
+let header = document.querySelector(".header");
+let chatFooter = document.querySelector(".chat-footer");
+bxMenu.addEventListener("click", function () {
+  header.classList.add("display-block");
+  header.classList.add("absaliut");
+  chatFooter.classList.add("disiplay-none");
+});
