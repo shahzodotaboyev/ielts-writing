@@ -119,7 +119,7 @@ main {
 }
 
 .chat-body {
-  padding: 10px 22px 50px !important;
+  padding: 10px 10px 50px !important;
   display: flex;
   gap: 20px;
   max-height: 79vh;
