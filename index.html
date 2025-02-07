@@ -12,44 +12,74 @@
   </head>
   <body>
     <div class="cantainer">
-      <div class="chatbot-popur">
-        <div class="chat-body">
-          <div class="message bot-message">
-            <img
-              class="bot-avatar"
-              width="45px"
-              height="45px"
-              src="./img/image (1).png"
-              alt=""
-            />
-            <div class="message-text">
-              Hey There 🖐  <br />How can I help you today?
+      <header class="header">
+        <h2>Level:</h2>
+      </header>
+      <main>
+        <nav class="nav">
+          <button class="chat add-bg">CHAT</button>
+          <button class="tarjimon">TARJIMON</button>
+          <button class="lugat">LUG'AT</button>
+          <button class="grammer">GRAMMER</button>
+          <button class="statistika">STATISTIKA</button>
+        </nav>
+        <div class="chatbot-popur">
+          <div class="chat-body">
+            <div class="message bot-message">
+              <img
+                class="bot-avatar"
+                width="45px"
+                height="45px"
+                src="./img/image (1).png"
+                alt=""
+              />
+              <div class="message-text">
+                Hey There 🖐 <br />How can I help you today?
+              </div>
             </div>
           </div>
+          <div class="chat-footer">
+            <form action="#" class="chat-form">
+              <textarea
+                required
+                class="message-input"
+                placeholder="Message..."
+              ></textarea>
+              <div class="chat-controls">
+                <div class="file-upload-wrapper">
+                  <input type="file" accept="image/*" id="file-input" hidden />
+                  <button
+                    type="button"
+                    id="file-upload"
+                    class="material-symbols-rounded"
+                  >
+                    attach_file
+                  </button>
+                </div>
+                <button
+                  id="send-message"
+                  type="submit"
+                  class="material-symbols-rounded"
+                >
+                  arrow_upward
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="chat-footer">
-          <form action="#" class="chat-form">
-            <textarea required class="message-input" placeholder="Message...">
-            </textarea>
-            <div class="chat-controls">
-              <button type="button" class="material-symbols-rounded">
-                sentiment_satisfied
-              </button>
-              <button type="button" class="material-symbols-rounded">
-                attach_file
-              </button>
-              <button
-                id="send-message"
-                type="submit"
-                class="material-symbols-rounded"
-              >
-                arrow_upward
-              </button>
-            </div>
-          </form>
+        <div class="tarjimon-page disiplay-none">
+          <h1>Transletor</h1>
         </div>
-      </div>
-      
+        <div class="lugat-page disiplay-none">
+          <h1>Lugat</h1>
+        </div>
+        <div class="grammer-page disiplay-none">
+          <h1>grammer</h1>
+        </div>
+        <div class="statistika-page disiplay-none">
+          <h1>statistika</h1>
+        </div>
+      </main>
     </div>
 
     <script src="./app.js"></script>

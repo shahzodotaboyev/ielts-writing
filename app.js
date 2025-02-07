@@ -1,12 +1,17 @@
 const chatBody = document.querySelector(".chat-body");
 const messageInput = document.querySelector(".message-input");
 const sendMessagebutton = document.querySelector("#send-message");
+const fileInput = document.querySelector("#file-input");
 
 const API_KEY = "AIzaSyDFDS7hiEK87NT-GrE3CMarlDyq32otTtc";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 const userData = {
   message: null,
+  file: {
+    data: null,
+    mime_type: null,
+  },
 };
 
 const createMessageElement = (content, ...classes) => {
@@ -23,7 +28,10 @@ const generateBotResponse = async () => {
     body: JSON.stringify({
       contents: [
         {
-          parts: [{ text: userData.message }],
+          parts: [
+            { text: userData.message },
+            ...(userData.file.data ? [{ inline_data: userData.file }] : []),
+          ],
         },
       ],
     }),
@@ -38,7 +46,11 @@ const generateBotResponse = async () => {
     const botMessageText =
       data.candidates?.[0]?.content?.parts?.[0]?.text ||
       "Kechirasiz, tushunmadim.";
-
+    const messageContent = `${
+      userData.file.data
+        ? `<img src="data:${userData.file.mime_type}; base64,${userData.file}" class="attachment"/>`
+        : ""
+    }`;
     const incomingMessageDiv = createMessageElement(
       `<img class="bot-avatar" width="45px" height="45px" src="./img/image (1).png" alt="" />
        <div class="message-text">${botMessageText}</div>`,
@@ -53,6 +65,7 @@ const generateBotResponse = async () => {
     console.error(error);
   }
 };
+
 const handleOutgoingMessage = (e) => {
   e.preventDefault();
 
@@ -98,35 +111,119 @@ messageInput.addEventListener("keydown", (e) => {
 });
 
 sendMessagebutton.addEventListener("click", handleOutgoingMessage);
-const scrollToBottom = () => {
-  // chatBody ni pastga siljish
-  chatBody.scrollTop = chatBody.scrollHeight;
 
-  // Ekran pastga siljish
+const scrollToBottom = () => {
+  chatBody.scrollTop = chatBody.scrollHeight;
   setTimeout(() => {
     window.scrollTo(0, document.body.scrollHeight);
-  }, 100); // kechikish vaqtini o'zgartiring
+  }, 100);
 };
-
-window.visualViewport.addEventListener("resize", adjustForKeyboard);
 
 const adjustForKeyboard = () => {
   setTimeout(() => {
-    // Klaviatura ochilganda faqatgina chat body ni ko'rsatish
     document.body.style.height = `${window.visualViewport.height}px`;
     scrollToBottom();
-  }, 200); // Klaviatura ochilganidan so'ng
+  }, 200);
 };
 
 window.visualViewport.addEventListener("resize", adjustForKeyboard);
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const base64String = e.target.result.split(",")[1];
+    userData.file = {
+      data: base64String,
+      mime_type: file.type,
+    };
 
-window.visualViewport.addEventListener("resize", () => {
-  document.body.style.height = `${window.visualViewport.height}px`;
-  scrollToBottom();
+    fileInput.value = "";
+  };
+  reader.readAsDataURL(file);
 });
 
-sendMessagebutton.addEventListener("touchend", (e) => {
-  e.preventDefault();
-  handleOutgoingMessage(e);
-  messageInput.focus();
+document
+  .querySelector("#file-upload")
+  .addEventListener("click", () => fileInput.click());
+
+let chat = document.querySelector(".chat");
+let tarjimon = document.querySelector(".tarjimon");
+let lugat = document.querySelector(".lugat");
+let grammer = document.querySelector(".grammer");
+let statistika = document.querySelector(".statistika");
+let chatbotPopur = document.querySelector(".chatbot-popur");
+let tarjimonPage = document.querySelector(".tarjimon-page");
+let lugatPage = document.querySelector(".lugat-page");
+let grammerPage = document.querySelector(".grammer-page");
+let statistikaPage = document.querySelector(".statistika-page");
+
+chat.addEventListener("click", function () {
+  chat.classList.add("add-bg");
+  tarjimon.classList.remove("add-bg");
+  lugat.classList.remove("add-bg");
+  grammer.classList.remove("add-bg");
+  statistika.classList.remove("add-bg");
+
+  chatbotPopur.classList.remove("disiplay-none");
+  tarjimonPage.classList.add("disiplay-none");
+  lugatPage.classList.add("disiplay-none");
+  grammerPage.classList.add("disiplay-none");
+  statistikaPage.classList.add("disiplay-none");
+});
+
+tarjimon.addEventListener("click", function () {
+  tarjimon.classList.add("add-bg");
+  chat.classList.remove("add-bg");
+  lugat.classList.remove("add-bg");
+  grammer.classList.remove("add-bg");
+  statistika.classList.remove("add-bg");
+
+  tarjimonPage.classList.remove("disiplay-none");
+  chatbotPopur.classList.add("disiplay-none");
+  lugatPage.classList.add("disiplay-none");
+  grammerPage.classList.add("disiplay-none");
+  statistikaPage.classList.add("disiplay-none");
+});
+
+lugat.addEventListener("click", function () {
+  lugat.classList.add("add-bg");
+  chat.classList.remove("add-bg");
+  grammer.classList.remove("add-bg");
+  tarjimon.classList.remove("add-bg");
+  statistika.classList.remove("add-bg");
+
+  chatbotPopur.classList.add("disiplay-none");
+  tarjimonPage.classList.add("disiplay-none");
+
+  lugatPage.classList.remove("disiplay-none");
+  grammerPage.classList.add("disiplay-none");
+  statistikaPage.classList.add("disiplay-none");
+});
+
+grammer.addEventListener("click", function () {
+  grammer.classList.add("add-bg");
+  chat.classList.remove("add-bg");
+  tarjimon.classList.remove("add-bg");
+  lugat.classList.remove("add-bg");
+  statistika.classList.remove("add-bg");
+
+  chatbotPopur.classList.add("disiplay-none");
+  tarjimonPage.classList.add("disiplay-none");
+  lugatPage.classList.add("disiplay-none");
+  grammerPage.classList.remove("disiplay-none");
+  statistikaPage.classList.add("disiplay-none");
+});
+
+statistika.addEventListener("click", function () {
+  statistika.classList.add("add-bg");
+  chat.classList.remove("add-bg");
+  lugat.classList.remove("add-bg");
+  grammer.classList.remove("add-bg");
+
+  chatbotPopur.classList.add("disiplay-none");
+  tarjimonPage.classList.add("disiplay-none");
+  lugatPage.classList.add("disiplay-none");
+  grammerPage.classList.add("disiplay-none");
+  statistikaPage.classList.remove("disiplay-none");
 });

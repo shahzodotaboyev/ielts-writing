@@ -24,35 +24,73 @@
 }
 
 .cantainer {
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
   min-height: 100vh;
   background: linear-gradient(#eeeeff, #c8c7ff);
 }
-.chatbot-popur {
-  max-width: 60%;
+.header {
   width: 100%;
-  height: 100vh;
+  height: 10vh;
+  border-radius: 50px;
   background: #fff;
-  /* border-radius: 20px 20px 0 0; */
-  overflow: hidden;
-  overflow-y: auto;
+}
+main {
+  display: flex;
+  gap: 20px;
+  height: 84vh;
+}
+.nav {
+  width: 15%;
+  height: 100%;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.nav button {
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid #cccce5;
+}
+
+.nav button:hover {
+  background: #3d39ac !important;
+
+  color: #fff;
+}
+
+.add-bg {
+  background: #3d39ac !important;
+  color: #fff;
+}
+.chatbot-popur {
+  max-width: 85%;
+  width: 100%;
+  height: 75vh;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
   box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
-  padding-bottom: 100px   10px ;
+  padding-bottom: 100px 10px;
 }
 
 .chat-body {
-  padding: 5px 22px;
+  padding: 10px 22px 50px;
   display: flex;
   gap: 20px;
-  height: calc(100vh - 120px); /* 🔹 Chat oynasi doim ekranda sig‘ishi uchun */
-  min-height: 80vh;
-  overflow-y: auto; /* 🔹 Skroll ishlashi uchun */
-  flex-direction: column; /* 🔹 Xabarlar pastdan emas, tabiiy tartibda chiqishi uchun */
+  max-height: 79vh;
+  overflow-y: auto;
+  flex-direction: column;
 }
-
 .chat-body .message {
   display: flex;
 
@@ -119,6 +157,11 @@
   animation: dotPluse 1.8s ease-in-out infinite;
   animation-delay: 0.3s;
 }
+.attachment {
+  width: 50%;
+  margin-top: -7px;
+  border-radius: 13px 3px 13px 13px;
+}
 
 @keyframes dotPluse {
   0%,
@@ -134,13 +177,13 @@
   }
 }
 .chat-footer {
-  position: absolute;
-  bottom: 5;
-  max-width: 60%;
-  width: 100%;
+  position: fixed;
+  bottom: 10px;
+  padding: 10px 20px;
+  width: calc(84% - 2px);
   background: #fff;
-  padding: 15px 22px 10px;
-  /* border-radius: 0 0 20px 20px; */
+  height: 10%;
+  border-radius: 0 0 20px 20px;
 }
 .chat-footer .chat-form {
   display: flex;
@@ -155,7 +198,7 @@
 .chat-form .message-input {
   border: none;
   outline: none;
-  height: 47px;
+  height: 50px;
   width: 100%;
   font-size: 0.95rem;
   resize: none;
@@ -191,14 +234,39 @@
   background: #f2f2ff;
 }
 
+.tarjimon-page,
+.lugat-page,
+.grammer-page,
+.statistika-page {
+  max-width: 85%;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 20px;
+}
+
 @media (max-width: 768px) {
+  .cantainer {
+    padding: 0;
+  }
   .chatbot-popur {
     max-width: 100%;
   }
+
   .chat-footer {
     max-width: 100%;
+    width: 100%;
+    bottom: 10px;
+    padding: 0px 10px;
   }
   .chat-body {
     padding: 5px 5px;
   }
+  .nav {
+    display: none;
+  }
+}
+
+.disiplay-none {
+  display: none;
 }
