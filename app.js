@@ -55,11 +55,13 @@ const generateBotResponse = async () => {
 };
 
 const handleOutgoingMessage = (e) => {
-  e.preventDefault();
+  e.preventDefault(); // Formani avtomatik submit bo‘lishini oldini olish
+
   userData.message = messageInput.value.trim();
   if (!userData.message) return;
 
   messageInput.value = "";
+  messageInput.focus(); // Klaviaturani ochiq qoldirish
 
   const outgoingMessageDiv = createMessageElement(
     `<div class="message-text">${userData.message}</div>`,
@@ -67,7 +69,7 @@ const handleOutgoingMessage = (e) => {
   );
   chatBody.appendChild(outgoingMessageDiv);
 
-  scrollToBottom(); // Scroll to bottom after user sends a message
+  scrollToBottom(); 
 
   setTimeout(() => {
     const thinkingMessageDiv = createMessageElement(
@@ -84,11 +86,12 @@ const handleOutgoingMessage = (e) => {
     );
 
     chatBody.appendChild(thinkingMessageDiv);
-    scrollToBottom(); // Scroll to bottom when "thinking" indicator appears
+    scrollToBottom();
 
     generateBotResponse();
   }, 100);
 };
+
 
 messageInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && messageInput.value.trim()) {
