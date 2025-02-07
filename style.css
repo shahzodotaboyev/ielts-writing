@@ -52,7 +52,7 @@
   min-height: 80vh;
   overflow-y: auto;
   flex-direction: column;
-  /* position: relative; 🔹 Bu kerak bo‘lishi mumkin */
+justify-content: end;
 }
 
  
