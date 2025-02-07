@@ -229,11 +229,16 @@ statistika.addEventListener("click", function () {
 });
 
 // ---------------------------
+
 let bxMenu = document.querySelector(".bx-menu");
 let header = document.querySelector(".header");
 let chatFooter = document.querySelector(".chat-footer");
+let x = document.querySelector(".bx-x-circle");
+let nav = document.querySelector(".nav");
 bxMenu.addEventListener("click", function () {
-  header.classList.add("display-block");
-  header.classList.add("absaliut");
-  chatFooter.classList.add("disiplay-none");
+  header.classList.toggle("display-block");
+  header.classList.toggle("absaliut");
+  chatbotPopur.classList.toggle("disiplay-none");
+  nav.classList.toggle("display-block");
+  bxMenu.classList.toggle("bx-x-circle");
 });
