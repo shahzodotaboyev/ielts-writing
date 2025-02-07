@@ -124,10 +124,8 @@ window.visualViewport.addEventListener("resize", () => {
   scrollToBottom();
 });
 
-sendMessagebutton.addEventListener("click", (e) => {
+sendMessagebutton.addEventListener("touchend", (e) => {
+  e.preventDefault();
   handleOutgoingMessage(e);
-
-  setTimeout(() => {
-    messageInput.focus(); // Klaviatura yopilmasligi uchun qayta fokus berish
-  }, 50);
+  messageInput.focus();
 });
