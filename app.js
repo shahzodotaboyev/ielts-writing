@@ -53,15 +53,14 @@ const generateBotResponse = async () => {
     console.error(error);
   }
 };
-
 const handleOutgoingMessage = (e) => {
-  e.preventDefault(); // Formani avtomatik submit bo‘lishini oldini olish
+  e.preventDefault();
 
   userData.message = messageInput.value.trim();
   if (!userData.message) return;
 
   messageInput.value = "";
-  messageInput.focus(); // Klaviaturani ochiq qoldirish
+  messageInput.focus();
 
   const outgoingMessageDiv = createMessageElement(
     `<div class="message-text">${userData.message}</div>`,
@@ -69,7 +68,7 @@ const handleOutgoingMessage = (e) => {
   );
   chatBody.appendChild(outgoingMessageDiv);
 
-  scrollToBottom(); 
+  scrollToBottom(); // 🔹 Foydalanuvchi xabar yozganda avtomatik skroll
 
   setTimeout(() => {
     const thinkingMessageDiv = createMessageElement(
@@ -86,12 +85,11 @@ const handleOutgoingMessage = (e) => {
     );
 
     chatBody.appendChild(thinkingMessageDiv);
-    scrollToBottom();
+    scrollToBottom(); // 🔹 Bot javob berayotganda ham skroll pastga tushsin
 
     generateBotResponse();
   }, 100);
 };
-
 
 messageInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && messageInput.value.trim()) {

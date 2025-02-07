@@ -47,15 +47,12 @@
   padding: 5px 22px;
   display: flex;
   gap: 20px;
-  max-height: 88vh;
-  height: 100%;
+  height: calc(100vh - 120px); /* 🔹 Chat oynasi doim ekranda sig‘ishi uchun */
   min-height: 80vh;
-  overflow-y: auto;
-  flex-direction: column;
-justify-content: end;
+  overflow-y: auto; /* 🔹 Skroll ishlashi uchun */
+  flex-direction: column; /* 🔹 Xabarlar pastdan emas, tabiiy tartibda chiqishi uchun */
 }
 
- 
 .chat-body .message {
   display: flex;
 
