@@ -250,17 +250,21 @@ main {
     padding: 0;
   }
   .chatbot-popur {
+    border-radius:0px ;
     max-width: 100%;
   }
 
   .chat-footer {
     max-width: 100%;
     width: 100%;
-    bottom: 10px;
-    padding: 0px 10px;
+    height: 10vh;
+    bottom: 2px;
+    border-radius: 0px;
+    height: 14%;
   }
   .chat-body {
     padding: 5px 5px;
+    border-radius: 0px;
   }
   .nav {
     display: none;
